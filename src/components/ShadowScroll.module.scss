@@ -1,0 +1,46 @@
+.Shadow {
+  position: relative;
+  width: 100%;
+  &.showStart::before {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0),
+      rgba(50, 50, 50, 0.40)
+    );
+    content: "";
+  }
+  &.showEnd::after {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(50, 50, 50, 0.40)
+    );
+    content: "";
+  }
+}
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  gap: 5px;
+  @media (hover: none) {
+    overflow: auto;
+  }
+}

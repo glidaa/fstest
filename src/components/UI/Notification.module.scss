@@ -1,0 +1,96 @@
+.NotificationShell {
+  width: 100%;
+}
+
+.NotificationContainer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: calc(100% - 32px);
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: var(--color-stroke-color-card-stroke-default);
+  background-color: var(--color-background-fill-color-card-background-default);
+  color: var(--color-fill-color-text-primary);
+  transition: background-color 0.2s, color 0.2s;
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+  }
+  &.expanded {
+    & .NotificationBottomPart > span {
+      overflow: hidden;
+      text-overflow: initial;
+      white-space: normal;
+    }
+  }
+}
+
+.NotificationControls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+}
+
+.NotificationCloseBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  background-color: transparent;
+  color: var(--color-fill-color-text-primary);
+  transition: color 0.2s;
+}
+
+.NotificationContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  & > div {
+    width: 100%;
+    min-width: 0;
+  }
+  gap: 10px;
+}
+
+.NotificationTopPart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.NotificationBottomPart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  & > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+  

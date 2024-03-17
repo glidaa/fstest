@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "api": {
+      "fsCoreAPI": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "auth": {
+      "fsCognito": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

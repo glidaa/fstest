@@ -1,0 +1,136 @@
+.TagFieldShell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  & > label {
+    width: max-content;
+    margin-bottom: 0;
+    color: var(--color-fill-color-text-primary);
+    font-size: 0.875rem;
+    cursor: text;
+    transition: color 0.2s;
+  }
+  &.disabled {
+    .TagFieldContainer {
+      border-bottom-color: var(--color-stroke-color-control-stroke-default);
+      background-color: var(--color-fill-color-control-disabled);
+      & > span {
+        color: var(--color-fill-color-text-disabled);
+      }
+    }
+    & * {
+      cursor: not-allowed;
+    }
+  }
+  gap: 5px;
+}
+
+.TagFieldContainer {
+  position: relative;
+  width: calc(100% - 24px);
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  border-color: var(--color-stroke-color-control-stroke-default);
+  border-bottom-color: var(--color-stroke-color-control-strong-stroke-default);
+  background-color: var(--color-fill-color-control-default);
+  font-size: 0.875rem;
+  cursor: text;
+  & > span {
+    color: var(--color-fill-color-text-secondary);
+  }
+  &::after {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: 0;
+    background-color: var(--color-stroke-color-control-strong-stroke-default);
+    content: "";
+  }
+  &:hover:not(:focus-within) {
+    background-color: var(--color-fill-color-control-secondary);
+  }
+  &:focus-within:not(.readOnly:not(.filled)) {
+    border-radius: 4px 4px 0 0;
+    background-color: var(--color-fill-color-control-input-active);
+    &::after {
+      height: 2px;
+      background-color: var(--color-fill-color-accent-primary) !important;
+    }
+  }
+  &.error {
+    border-color: var(--color-fill-color-system-critical)!important;
+    & > label {
+      color: var(--color-fill-color-system-critical)!important;
+    }
+  }
+}
+
+.TagFieldValues {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 5px;
+}
+
+.TagItem {
+  display: inline-flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 3px 0;
+  padding: 2px 6px;
+  border: 1px solid;
+  border-radius: 20px;
+  border-color: var(--color-stroke-color-card-stroke-default);
+  background-color: var(--color-background-fill-color-card-background-default);
+  color: var(--color-fill-color-text-secondary);
+  font-size: 0.875rem;
+  cursor: default;
+  & > span {
+    cursor: pointer;
+    &:nth-child(1) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &:nth-child(2) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 10px;
+      height: 10px;
+      padding: 1px;
+      border-radius: 100%;
+      &:hover {
+        background-color: var(--color-fill-color-text-secondary);
+        color: var(--color-fill-color-text-on-accent-primary);
+      }
+    }
+  }
+  gap: 5px;
+}
+
+.TagInput {
+  display: inline-flex;
+  z-index: 1;
+  position: relative;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  min-height: 16px;
+  width: fit-content;
+  height: fit-content;
+  color: var(--color-fill-color-text-primary);
+  caret-color: var(--color-fill-color-text-primary);
+  font-size: 0.875rem;
+  cursor: text;
+  transition: color 0.2s;
+}

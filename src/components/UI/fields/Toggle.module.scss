@@ -1,0 +1,73 @@
+.ToggleShell {
+  width: 100%;
+  & > span {
+    margin-left: 10px;
+    color: var(--color-fill-color-system-critical);
+    font-size: 0.75rem;
+  }
+  &.disabled {
+    opacity: 0.6;
+    & .ToggleHandle {
+      cursor: not-allowed;
+    }
+  }
+}
+  
+.ToggleContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 8px;
+  border-color: var(--color-stroke-color-card-stroke-default);
+  background-color: var(--color-background-fill-color-card-background-default);
+  font-size: 0.875rem;
+  & > label {
+    width: max-content;
+    margin-bottom: 0;
+    color: var(--color-fill-color-text-primary);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  &.error {
+    border-color: var(--color-fill-color-system-critical)!important;
+    & > label {
+      color: var(--color-fill-color-system-critical)!important;
+    }
+  }
+  &.readOnly {
+    & .ToggleHandle {
+      cursor: default;
+    }
+  }
+}
+.ToggleHandle {
+  width: 35px;
+  padding: 3px 5px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  border-color: var(--color-stroke-color-control-strong-stroke-default);
+  background-color: var(--color-fill-color-control-alt-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  &.selected {
+    border-color: var(--color-fill-color-accent-primary);
+    background-color: var(--color-fill-color-accent-primary);
+    & > div {
+      transform: translateX(calc(100% + 7.5px));
+      background-color: var(--color-fill-color-text-on-accent-primary);
+    }
+  }
+  & > div {
+    width: 15px;
+    height: 15px;
+    transform: translateX(0);
+    border-radius: 100%;
+    background-color: var(--color-fill-color-text-secondary);
+    transition: transform 0.2s ease-in-out;
+  }
+}

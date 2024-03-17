@@ -1,0 +1,28 @@
+.DueSuggestion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 8px 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--color-fill-color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &.active {
+    background-color: var(--color-fill-color-subtle-secondary);
+  }
+  gap: 5px;
+}
+
+.NoDue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--color-fill-color-text-primary);
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}

@@ -1,0 +1,38 @@
+.LoadingContainer {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background-fill-color-layer-default);
+  transition: background-color 0.2s;
+  & > span:nth-child(1) {
+    color: var(--color-fill-color-accent-primary);
+    font-weight: bold;
+    font-size: 2.625rem;
+    transition: color 0.2s;
+  }
+  & > span:nth-child(3) {
+    color: var(--color-fill-color-text-primary);
+    font-size: 1.125rem;
+    text-align: center;
+    transition: color 0.2s;
+  }
+  & > div {
+    width: 250px;
+  }
+  gap: 30px;
+  @media only screen and (max-width: 768px) {
+    & > span:nth-child(1) {
+      font-size: 2.25rem;
+    }
+    & > span:nth-child(3) {
+      font-size: 1rem;
+    }
+    & > div {
+      width: 200px;
+    }
+  }
+}

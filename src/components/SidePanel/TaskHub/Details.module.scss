@@ -1,0 +1,12 @@
+.DetailsForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  & > h2 > span {
+    cursor: pointer;
+  }
+  & > input[type="submit"] {
+    display: none;
+  }
+  gap: 15px;
+}

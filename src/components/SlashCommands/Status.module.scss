@@ -1,0 +1,32 @@
+.StatusSuggestion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--color-fill-color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &.selected {
+    background-color: var(--color-fill-color-subtle-secondary);
+  }
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    & > span:nth-child(1) {
+      font-size: 1.125rem;
+    }
+    & > span:nth-child(2) {
+      color: var(--color-fill-color-text-primary);
+      font-size: 0.875rem;
+      text-transform: lowercase;
+      transition: color 0.2s;
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+  }
+  gap: 10px;
+}
