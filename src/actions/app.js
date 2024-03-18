@@ -5,7 +5,11 @@ import * as attachmentsActions from "./attachments"
 import * as historyActions from "./history"
 import { clearTabs } from "../components/TabViewManager"
 import { navigate } from "../components/Router"
+<<<<<<< HEAD
 // import PubSub from "../amplify/PubSub"
+=======
+import PubSub from "../amplify/PubSub"
+>>>>>>> main
 
 export const SET_PROJECT = "SET_PROJECT";
 export const SET_TASK = "SET_TASK";
@@ -83,9 +87,15 @@ export const setLockedTaskField = (fieldName) => ({
 export const handleSetProject = (id, shouldChangeURL = true) => (dispatch, getState) => {
   const { user, app, projects } = getState()
   if (app.selectedProject !== id) {
+<<<<<<< HEAD
     // PubSub.unsubscribeTopic("tasks");
     // dispatch(handleSetTask(null, shouldChangeURL));
     // dispatch(tasksActions.emptyTasks());
+=======
+    PubSub.unsubscribeTopic("tasks");
+    dispatch(handleSetTask(null, shouldChangeURL));
+    dispatch(tasksActions.emptyTasks());
+>>>>>>> main
     if (id) {
       if (projects[id]) {
         dispatch(setProject(id))
@@ -99,9 +109,15 @@ export const handleSetProject = (id, shouldChangeURL = true) => (dispatch, getSt
       }
       if (!getState().projects[id].isVirtual) {
         dispatch(tasksActions.handleFetchTasks(id))
+<<<<<<< HEAD
         // if (user.state === AuthState.SignedIn || projects[id].isTemp) {
         //   PubSub.subscribeTopic("tasks", id)
         // }
+=======
+        if (user.state === AuthState.SignedIn || projects[id].isTemp) {
+          PubSub.subscribeTopic("tasks", id)
+        }
+>>>>>>> main
       }
     } else {
       if (shouldChangeURL) {
@@ -123,7 +139,11 @@ export const handleSetTask = (id, shouldChangeURL = true) => (dispatch, getState
   const { user, projects, tasks, app } = getState()
   dispatch(attachmentsActions.emptyAttachments())
   dispatch(historyActions.emptyHistory())
+<<<<<<< HEAD
   // PubSub.unsubscribeTopic("comments")
+=======
+  PubSub.unsubscribeTopic("comments")
+>>>>>>> main
   dispatch(commentsActions.emptyComments())
   dispatch(setProjectTitle(false))
   if (!id && app.selectedTask) {
@@ -157,7 +177,11 @@ export const handleSetTask = (id, shouldChangeURL = true) => (dispatch, getState
       dispatch(historyActions.handleFetchHistory(id))
       dispatch(commentsActions.handleFetchComments(id))
       if (user.state === AuthState.SignedIn) {
+<<<<<<< HEAD
         // PubSub.subscribeTopic("comments", id)
+=======
+        PubSub.subscribeTopic("comments", id)
+>>>>>>> main
       }
     }
   }

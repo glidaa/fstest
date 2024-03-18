@@ -3,10 +3,17 @@ import { useDispatch, useSelector } from "react-redux"
 import * as appActions from "../actions/app"
 import * as projectsActions from "../actions/projects"
 import * as tasksActions from "../actions/tasks"
+<<<<<<< HEAD
 // import * as queries from "../graphql/queries"
 import { AuthState } from '../constants';
 import { navigate, useRouter } from "./Router"
 // import API from "../amplify/API"
+=======
+import * as queries from "../graphql/queries"
+import { AuthState } from '../constants';
+import { navigate, useRouter } from "./Router"
+import API from "../amplify/API"
+>>>>>>> main
 
 const NavigationManager = () => {
   const { routeLocation, routeParams } = useRouter();
@@ -30,11 +37,19 @@ const NavigationManager = () => {
         let reqProject = Object.values(projects).filter(x => `${x.owner}/${x.permalink}` === `${username}/${projectPermalink}`)[0]
         if (!reqProject) {
           try {
+<<<<<<< HEAD
             // reqProject = (await API.execute(queries.getProjectByPermalink, {
             //   permalink: projectPermalink,
             //   owner: username
             // })).data.getProjectByPermalink
             // dispatch(projectsActions.createProject(reqProject, "temp"))
+=======
+            reqProject = (await API.execute(queries.getProjectByPermalink, {
+              permalink: projectPermalink,
+              owner: username
+            })).data.getProjectByPermalink
+            dispatch(projectsActions.createProject(reqProject, "temp"))
+>>>>>>> main
           } catch {
             reqProject = null
             if (taskPermalink) {

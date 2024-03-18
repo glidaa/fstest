@@ -1,10 +1,18 @@
 import { AuthState } from '../constants';
 import getGravatar from '../utils/getGravatar';
+<<<<<<< HEAD
 // import * as queries from "../graphql/queries"
 import * as cacheController from "../controllers/cache"
 // import Auth from '../amplify/Auth';
 // import API from '../amplify/API';
 // import PubSub from '../amplify/PubSub';
+=======
+import * as queries from "../graphql/queries"
+import * as cacheController from "../controllers/cache"
+import Auth from '../amplify/Auth';
+import API from '../amplify/API';
+import PubSub from '../amplify/PubSub';
+>>>>>>> main
 
 export const SET_STATE = "SET_STATE";
 export const SET_DATA = "SET_DATA";
@@ -27,11 +35,19 @@ const fetchCachedUser = (user) => ({
 
 export const handleSetState = (userState) => (dispatch) => {
   if (userState !== AuthState.SignedIn) {
+<<<<<<< HEAD
     // PubSub.unsubscribeTopic("user")
   }
   dispatch(setState(userState))
   if (userState === AuthState.SignedIn) {
     // PubSub.subscribeTopic("user")
+=======
+    PubSub.unsubscribeTopic("user")
+  }
+  dispatch(setState(userState))
+  if (userState === AuthState.SignedIn) {
+    PubSub.subscribeTopic("user")
+>>>>>>> main
   }
 }
 
@@ -50,6 +66,7 @@ export const handleSetData = (userData) => (dispatch, getState) => {
   }
 }
 
+<<<<<<< HEAD
 // export const handleFetchUser = () => async (dispatch, getState) => {
 //   const { app } = getState();
 //   const isLoggedIn = await Auth.isLoggedIn();
@@ -91,3 +108,46 @@ export const handleSetData = (userData) => (dispatch, getState) => {
 //   if (shouldResetCache) window.location.reload();
 //   return getState().user
 // }
+=======
+export const handleFetchUser = () => async (dispatch, getState) => {
+  const { app } = getState();
+  const isLoggedIn = await Auth.isLoggedIn();
+  if (!app.isOffline && isLoggedIn) {
+    try {
+      const userData = (
+        await API.execute(queries.getUserByUsername, {
+          username: (await Auth.getUser()).username,
+        })
+      ).data.getUserByUsername;
+      userData.jwt = await Auth.getAccessToken();
+      dispatch(handleSetData(userData))
+      dispatch(handleSetState(AuthState.SignedIn))
+    } catch (err) {
+      if (err.message === 'Failed to fetch') {
+        dispatch(fetchCachedUser(cacheController.getUser()))
+      }
+    }
+  } else if (cacheController.getUser().state === AuthState.SignedIn) {
+    if (isLoggedIn) {
+      dispatch(fetchCachedUser(cacheController.getUser()));
+    } else {
+      cacheController.resetCache();
+      dispatch(handleSetState(AuthState.SignedOut))
+      dispatch(handleSetData(null))
+    }
+  } else {
+    dispatch(handleSetState(AuthState.SignedOut))
+    dispatch(handleSetData(null))
+  }
+  return getState().user
+}
+
+export const handleSignOut = (shouldResetCache = false) => async (dispatch, getState) => {
+  if (shouldResetCache) cacheController.resetCache();
+  await Auth.signOut()
+  dispatch(handleSetState(AuthState.SignedOut))
+  dispatch(handleSetData(null))
+  if (shouldResetCache) window.location.reload();
+  return getState().user
+}
+>>>>>>> main

@@ -7,8 +7,13 @@ import styles from "./Upload.module.scss";
 import upload from "../../utils/upload";
 import formatSize from "../../utils/formatSize";
 import ProgressBar from "../UI/ProgressBar";
+<<<<<<< HEAD
 // import API from "../../amplify/API";
 // import { uploadExternal } from "../../graphql/mutations";
+=======
+import API from "../../amplify/API";
+import { uploadExternal } from "../../graphql/mutations";
+>>>>>>> main
 import { ReactComponent as YoutubeIcon } from "../../assets/brands/youtube.svg";
 import { ReactComponent as VimeoIcon } from "../../assets/brands/vimeo.svg";
 import { ReactComponent as LoomIcon } from "../../assets/brands/loom.svg";
@@ -61,9 +66,15 @@ const Upload = ({ importedBlobs }) => {
       }, 1000);
     } else {
       try {
+<<<<<<< HEAD
         // const urlQueryOpts = { url: attachmentUrl, taskId: selectedTask };
         // await API.execute(uploadExternal, urlQueryOpts);
         // hideModal();
+=======
+        const urlQueryOpts = { url: attachmentUrl, taskId: selectedTask };
+        await API.execute(uploadExternal, urlQueryOpts);
+        hideModal();
+>>>>>>> main
       } catch (error) {
         setExternalError(error);
         setIsBusy(false);

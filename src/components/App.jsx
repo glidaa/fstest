@@ -2,15 +2,26 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
+<<<<<<< HEAD
 // import API from "../amplify/API";
 import store from "../store";
 import isOnline from "../utils/isOnline";
 // import AuthFlow from "./AuthFlow";
+=======
+import API from "../amplify/API";
+import store from "../store";
+import isOnline from "../utils/isOnline";
+import AuthFlow from "./AuthFlow";
+>>>>>>> main
 import Home from "./Home";
 import Router, { addRouteComponent } from "./Router";
 
 addRouteComponent("Home", Home);
+<<<<<<< HEAD
 // addRouteComponent("AuthFlow", AuthFlow);
+=======
+addRouteComponent("AuthFlow", AuthFlow);
+>>>>>>> main
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +37,7 @@ const App = () => {
     }
   };
 
+<<<<<<< HEAD
   // const checkReloadAbility = (e) => {
   //   if (API.mutationQueue.length > 0) {
   //     e.returnValue = "Dude, are you sure you want to leave? Think of the kittens!";
@@ -33,6 +45,15 @@ const App = () => {
   //     delete e["returnValue"];
   //   }
   // };
+=======
+  const checkReloadAbility = (e) => {
+    if (API.mutationQueue.length > 0) {
+      e.returnValue = "Dude, are you sure you want to leave? Think of the kittens!";
+    } else {
+      delete e["returnValue"];
+    }
+  };
+>>>>>>> main
 
   const checkConnection = async () => {
     const result = await isOnline();
@@ -46,6 +67,7 @@ const App = () => {
     }
   }
 
+<<<<<<< HEAD
   // useEffect(() => {
   //   window.addEventListener("storage", fetchAppSettings);
   //   window.addEventListener("beforeunload", checkReloadAbility);
@@ -63,6 +85,25 @@ const App = () => {
   //     window.removeEventListener("beforeunload", checkReloadAbility);
   //   };
   // }, []);
+=======
+  useEffect(() => {
+    window.addEventListener("storage", fetchAppSettings);
+    window.addEventListener("beforeunload", checkReloadAbility);
+    checkConnection();
+    window.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    }, false);
+    window.addEventListener("drop", (e) => {
+      e.preventDefault();
+    }, false);
+    const checkConnectionInterval = setInterval(checkConnection, 3000);
+    return () => {
+      clearInterval(checkConnectionInterval);
+      window.removeEventListener("storage", fetchAppSettings);
+      window.removeEventListener("beforeunload", checkReloadAbility);
+    };
+  }, []);
+>>>>>>> main
 
   useEffect(() => {
     const availColors = {
