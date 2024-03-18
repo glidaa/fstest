@@ -1,6 +1,6 @@
 // import API from "../amplify/API";
 // import { initializeUpload } from "../graphql/queries";
-import isTextBlob from "./isTextBlob";
+// import isTextBlob from "./isTextBlob";
 
 const upload = async (blob, taskId, onProgress) => {
   // const mimeType = blob.type
