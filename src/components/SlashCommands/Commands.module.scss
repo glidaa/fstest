@@ -1,0 +1,69 @@
+.CommandSuggestion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--color-fill-color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &.selected {
+    background-color: var(--color-fill-color-subtle-secondary);
+  }
+  & > svg {
+    fill: var(--color-fill-color-accent-primary);
+    color: var(--color-fill-color-accent-primary);
+    transition: background-color 0.2s, fill 0.2s;
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    & > div:nth-child(1) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      & > span:nth-child(1) {
+        color: var(--color-fill-color-text-primary);
+        font-size: 0.875rem;
+        text-transform: lowercase;
+        transition: color 0.2s;
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+      & > span:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        padding: 2px;
+        border: 1px solid;
+        border-radius: 4px;
+        border-color: var(--color-stroke-color-card-stroke-default);
+        background-color: var(--color-background-fill-color-card-background-default);
+        color: var(--color-fill-color-accent-primary);
+        font-size: 0.75rem;
+        line-height: 0;
+        text-transform: lowercase;
+        transition: background-color 0.2s, color 0.2s;
+      }
+      gap: 5px;
+    }
+  }
+  gap: 10px;
+}
+
+.NoIntent {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  color: var(--color-fill-color-text-primary);
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}

@@ -1,0 +1,80 @@
+.SelectShell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  & > label {
+    width: max-content;
+    margin-bottom: 0;
+    color: var(--color-fill-color-text-primary);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  gap: 5px;
+}
+
+.SelectContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+  &.row {
+    flex-direction: row;
+  }
+  &.centeredText {
+    text-align: center;
+  }
+}
+
+.Selection {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid;
+  border-radius: 4px;
+  border-color: var(--color-stroke-color-control-stroke-on-accent-tertiary);
+  outline: none;
+  background-color: var(--color-background-fill-color-card-background-default);
+  text-align: left;
+  text-align: inherit;
+  cursor: pointer;
+  opacity: 1;
+  transition: color 0.2s, border-color 0.2s, opacity 0.3s;
+  & > span:nth-child(1) {
+    width: inherit;
+    color: var(--color-fill-color-text-secondary);
+    font-size: 1.5rem;
+    transition: color 0.2s;
+  }
+  & > span:nth-child(2) {
+    width: inherit;
+    color: #aaa8ac;
+    font-size: 0.875rem;
+  }
+  &:hover, &:active {
+    background-color: var(--color-fill-color-subtle-secondary) !important;
+  }
+  &.selected {
+    border-color: var(--color-fill-color-accent-primary);
+    background-color: var(--color-fill-color-subtle-tertiary);
+    cursor: default;
+    & > span:nth-child(1) {
+      color: var(--color-fill-color-accent-primary);
+    }
+    & > span:nth-child(2) {
+      color: var(--color-fill-color-text-primary);
+    }
+  }
+  &.readOnly {
+    cursor: default;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

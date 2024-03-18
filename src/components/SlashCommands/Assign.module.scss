@@ -1,0 +1,39 @@
+.AssigneeSuggestion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--color-fill-color-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  &.selected {
+    background-color: var(--color-fill-color-subtle-secondary);
+  }
+  & > div {
+    display: flex;
+    flex-direction: column;
+    & > span:nth-child(1) {
+      color: var(--color-fill-color-text-primary);
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    & > span:nth-child(2) {
+      color: var(--color-fill-color-text-secondary);
+      font-size: 0.75rem;
+      transition: color 0.2s;
+    }
+  }
+  gap: 10px;
+}
+
+.NoKeyword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: var(--color-fill-color-text-primary);
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}

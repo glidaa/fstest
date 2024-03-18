@@ -1,0 +1,32 @@
+.AuthFlowContainer {
+  position: fixed !important;
+  width: 100%;
+  overflow: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      /* IE10+ CSS styles go here */
+      height: 100%;
+    }
+}
+
+.backBtn {
+  display: flex;
+  z-index: 1;
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-fill-color-accent-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+}

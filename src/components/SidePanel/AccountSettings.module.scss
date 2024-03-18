@@ -1,0 +1,33 @@
+.AccountSettingsForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 8px;
+  & > h2 > span {
+    cursor: pointer;
+  }
+  & > input[type="submit"] {
+    display: none;
+  }
+  gap: 15px;
+}
+
+.AccountSettingsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & > span:nth-child(2) {
+    color: var(--color-fill-color-text-primary);
+    font-size: 1.625rem;
+    line-height: 0;
+    transition: color 0.2s;
+  }
+  & > span:nth-child(3) {
+    color: var(--color-fill-color-text-primary);
+    font-size: 0.875rem;
+    line-height: 0;
+    transition: color 0.2s;
+  }
+  gap: 25px;
+}

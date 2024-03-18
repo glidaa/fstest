@@ -1,0 +1,25 @@
+.AvatarGroupContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ImageAvatar {
+  display: inline;
+  border: 2px solid;
+  border-radius: 100%;
+  border-color: var(--color-fill-color-accent-primary);
+  transition: border-color 0.2s;
+}
+
+.LetterAvatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  border-radius: 100%;
+  border-color: var(--color-fill-color-accent-primary);
+  background-color: var(--auxiliarySurface);
+  color: var(--color-fill-color-accent-primary);
+  line-height: 0;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
