@@ -6,23 +6,14 @@ import * as projectsActions from "../actions/projects"
 import * as tasksActions from "../actions/tasks"
 import * as userActions from "../actions/user"
 import * as usersActions from "../actions/users"
-<<<<<<< HEAD
 // import * as queries from "../graphql/queries"
-=======
-import * as queries from "../graphql/queries"
->>>>>>> main
 import * as cacheController from "../controllers/cache"
 import { panelPages, AuthState } from '../constants';
 import store from "../store";
 import { navigate, useRouterNoUpdates } from "./Router"
 import sortByRank from "../utils/sortByRank"
-<<<<<<< HEAD
 // import API from "../amplify/API"
 // import PubSub from "../amplify/PubSub"
-=======
-import API from "../amplify/API"
-import PubSub from "../amplify/PubSub"
->>>>>>> main
 
 const SyncManager = () => {
   const [isInitial, setIsInitial] = useState(true)
@@ -40,15 +31,9 @@ const SyncManager = () => {
       if (isInitial) {
         setIsInitial(false)
       } else if (isOffline) {
-<<<<<<< HEAD
         // dispatch(appActions.setSynced(false))
         // dispatch(usersActions.addCachedUsers(cacheController.getUsers()))
         // PubSub.unsubscribeAll()
-=======
-        dispatch(appActions.setSynced(false))
-        dispatch(usersActions.addCachedUsers(cacheController.getUsers()))
-        PubSub.unsubscribeAll()
->>>>>>> main
       } else {
         (async () => {
           const currUser = await dispatch(userActions.handleFetchUser())
@@ -56,7 +41,6 @@ const SyncManager = () => {
             routeParams.username &&
             currUser.state === AuthState.SignedIn) {
               await dispatch(notificationsActions.handleFetchNotifications())
-<<<<<<< HEAD
               // PubSub.subscribeTopic("notifications")
               await dispatch(projectsActions.handleFetchOwnedProjects(true))
               await dispatch(projectsActions.handleFetchAssignedProjects(true))
@@ -70,21 +54,6 @@ const SyncManager = () => {
                   //   owner: routeParams.username
                   // })).data.getProjectByPermalink
                   // dispatch(projectsActions.createProject(reqProject, "temp"))
-=======
-              PubSub.subscribeTopic("notifications")
-              await dispatch(projectsActions.handleFetchOwnedProjects(true))
-              await dispatch(projectsActions.handleFetchAssignedProjects(true))
-              const projects = await dispatch(projectsActions.handleFetchWatchedProjects(true))
-              PubSub.subscribeTopic("ownedProjects")
-              let reqProject = Object.values(projects).filter(x => `${x.owner}/${x.permalink}` === `${routeParams.username}/${routeParams.projectPermalink}`)[0]
-              if (!reqProject) {
-                try {
-                  reqProject = (await API.execute(queries.getProjectByPermalink, {
-                    permalink: routeParams.projectPermalink,
-                    owner: routeParams.username
-                  })).data.getProjectByPermalink
-                  dispatch(projectsActions.createProject(reqProject, "temp"))
->>>>>>> main
                 } catch {
                   reqProject = null
                   if (routeParams.taskPermalink) {
@@ -110,19 +79,11 @@ const SyncManager = () => {
               }
           } else if (currUser.state === AuthState.SignedIn) {
             await dispatch(notificationsActions.handleFetchNotifications())
-<<<<<<< HEAD
             // PubSub.subscribeTopic("notifications")
             await dispatch(projectsActions.handleFetchOwnedProjects(true))
             await dispatch(projectsActions.handleFetchAssignedProjects(true))
             const projects = await dispatch(projectsActions.handleFetchWatchedProjects(true))
             // PubSub.subscribeTopic("ownedProjects")
-=======
-            PubSub.subscribeTopic("notifications")
-            await dispatch(projectsActions.handleFetchOwnedProjects(true))
-            await dispatch(projectsActions.handleFetchAssignedProjects(true))
-            const projects = await dispatch(projectsActions.handleFetchWatchedProjects(true))
-            PubSub.subscribeTopic("ownedProjects")
->>>>>>> main
             const firstProject = sortByRank(Object.values(projects).filter(x => x.isOwned))?.[0]
             if (firstProject) {
               dispatch(appActions.handleSetProject(firstProject.id, false))

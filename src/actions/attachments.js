@@ -1,15 +1,8 @@
 import { AuthState, ThingStatus } from '../constants';
-<<<<<<< HEAD
 // import { listAttachmentsByTaskId } from "../graphql/queries"
 import * as statusActions from "./status"
 import * as cacheController from "../controllers/cache"
 // import API from '../amplify/API';
-=======
-import { listAttachmentsByTaskId } from "../graphql/queries"
-import * as statusActions from "./status"
-import * as cacheController from "../controllers/cache"
-import API from '../amplify/API';
->>>>>>> main
 
 export const CREATE_ATTACHMENT = "CREATE_ATTACHMENT";
 export const EMPTY_ATTACHMENTS = "EMPTY_ATTACHMENTS";
@@ -41,17 +34,10 @@ export const handleFetchAttachments = (taskId) => async (dispatch, getState) => 
   const { user, app, projects } = getState()
   if (user.state === AuthState.SignedIn || projects[app.selectedProject].isTemp) {
     try {
-<<<<<<< HEAD
       // const res = await API.execute(listAttachmentsByTaskId, { taskId })
       // const items = res.data.listAttachmentsByTaskId.items;
       // dispatch(fetchAttachments(items, taskId))
       // dispatch(statusActions.setAttachmentsStatus(ThingStatus.READY))
-=======
-      const res = await API.execute(listAttachmentsByTaskId, { taskId })
-      const items = res.data.listAttachmentsByTaskId.items;
-      dispatch(fetchAttachments(items, taskId))
-      dispatch(statusActions.setAttachmentsStatus(ThingStatus.READY))
->>>>>>> main
     } catch (err) {
       if (err.message === 'Failed to fetch') {
         dispatch(fetchCachedAttachments(cacheController.getAttachmentsByTaskId(taskId)))

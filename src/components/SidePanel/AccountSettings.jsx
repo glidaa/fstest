@@ -1,21 +1,13 @@
 import React, { useState, useMemo, useImperativeHandle, forwardRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
 // import * as mutations from "../../graphql/mutations"
-=======
-import * as mutations from "../../graphql/mutations"
->>>>>>> main
 import * as appActions from "../../actions/app";
 import * as userActions from "../../actions/user";
 import styles from "./AccountSettings.module.scss"
 import { ReactComponent as LogOutIcon } from "@fluentui/svg-icons/icons/sign_out_24_regular.svg";
 import TextField from '../UI/fields/TextField';
 import Avatar from '../UI/Avatar';
-<<<<<<< HEAD
 // import API from '../../amplify/API';
-=======
-import API from '../../amplify/API';
->>>>>>> main
 import { useModal } from '../ModalManager';
 import modals from '../modals';
 
@@ -81,7 +73,6 @@ const AccountSettings = forwardRef((_, ref) => {
     })
   }
   const saveChanges = () => {
-<<<<<<< HEAD
     // setIsBusy(true)
     // API.execute(mutations.updateUser, {
     //   input: {
@@ -94,20 +85,6 @@ const AccountSettings = forwardRef((_, ref) => {
     // }).catch(() => {
     //   setIsBusy(false)
     // })
-=======
-    setIsBusy(true)
-    API.execute(mutations.updateUser, {
-      input: {
-        username,
-        firstName: newFirstName,
-        lastName: newLastName
-      }
-    }).then((_) => {
-      setIsBusy(false)
-    }).catch(() => {
-      setIsBusy(false)
-    })
->>>>>>> main
   }
   useImperativeHandle(ref, () => ({
     panelProps: {

@@ -1,10 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
 // import * as mutations from "../../graphql/mutations"
-=======
-import * as mutations from "../../graphql/mutations"
->>>>>>> main
 import * as appActions from "../../actions/app";
 import * as notificationsActions from "../../actions/notifications";
 import { ReactComponent as NoNotificationsIllustration } from "../../assets/undraw_notify_re_65on.svg";
@@ -12,11 +8,7 @@ import { ReactComponent as RemoveIcon } from "@fluentui/svg-icons/icons/delete_2
 import { ReactComponent as LoadingSpinner } from "../../assets/Rolling-1s-200px.svg";
 import Notification from '../UI/Notification';
 import { navigate } from '../Router';
-<<<<<<< HEAD
 // import API from '../../amplify/API';
-=======
-import API from '../../amplify/API';
->>>>>>> main
 import Illustration from '../UI/Illustration';
 import { ThingStatus } from '../../constants';
 import styles from "./Notifications.module.scss"
@@ -36,17 +28,10 @@ const Notifications = forwardRef((_, ref) => {
     dispatch(appActions.handleSetLeftPanel(false))
   }
   const dismissNotifications = () => {
-<<<<<<< HEAD
     // API.execute(mutations.dismissNotifications)
     // .then(() => {
     //   dispatch(notificationsActions.emptyNotifications())
     // })
-=======
-    API.execute(mutations.dismissNotifications)
-    .then(() => {
-      dispatch(notificationsActions.emptyNotifications())
-    })
->>>>>>> main
   }
   const handleOpenNotification = (link) => {
     navigate(link);
@@ -65,21 +50,12 @@ const Notifications = forwardRef((_, ref) => {
     }
   }));
   const dismissNotification = (e, id) => {
-<<<<<<< HEAD
     // e.stopPropagation()
     // API.execute(mutations.dismissNotification, { input: { id } })
     //   .then(() => {})
     //   .catch((err) => {
     //     console.log(err);
     //   });
-=======
-    e.stopPropagation()
-    API.execute(mutations.dismissNotification, { input: { id } })
-      .then(() => {})
-      .catch((err) => {
-        console.log(err);
-      });
->>>>>>> main
   }
   return isReady ? (
     notifications.stored.length ? notifications.stored.map(x => (

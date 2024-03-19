@@ -1,9 +1,5 @@
 import { AuthState, ThingStatus } from '../constants';
-<<<<<<< HEAD
 // import { listTasksForProject } from "../graphql/queries"
-=======
-import { listTasksForProject } from "../graphql/queries"
->>>>>>> main
 import * as appActions from "./app"
 import * as statusActions from "./status"
 import * as usersActions from "./users"
@@ -12,13 +8,8 @@ import * as attachmentsActions from "./attachments"
 import * as historyActions from "./history"
 import * as cacheController from "../controllers/cache"
 import prepareTaskToBeSent from "../utils/prepareTaskToBeSent";
-<<<<<<< HEAD
 // import API from '../amplify/API';
 // import PubSub from '../amplify/PubSub';
-=======
-import API from '../amplify/API';
-import PubSub from '../amplify/PubSub';
->>>>>>> main
 
 export const CREATE_TASK = "CREATE_TASK";
 export const UPDATE_TASK = "UPDATE_TASK";
@@ -57,7 +48,6 @@ const fetchCachedTasks = (tasks) => ({
   tasks
 });
 
-<<<<<<< HEAD
 // export const handleCreateTask = (taskState) => (dispatch, getState) => {
 //   const { app, user, projects } = getState()
 //   if (user.state === AuthState.SignedIn) {
@@ -109,59 +99,6 @@ const fetchCachedTasks = (tasks) => ({
 //     }
 //   }
 // }
-=======
-export const handleCreateTask = (taskState) => (dispatch, getState) => {
-  const { app, user, projects } = getState()
-  if (user.state === AuthState.SignedIn) {
-    const dataToSend = prepareTaskToBeSent(taskState, user.data.username)
-    if (taskState.projectId === getState().app.selectedProject) {
-      dispatch(createTask({
-        watchers: [],
-        permalink: projects[app.selectedProject].totalTasks + 1,
-        owner: user.data.username,
-        isVirtual: true,
-        ...taskState
-      }))
-      dispatch(appActions.handleSetTask(taskState.id))
-    }
-    API.mutate({
-      type: "createTask",
-      variables: dataToSend,
-      success: (incoming) => {
-        dispatch(updateTask({
-          id: incoming.data.createTask.id,
-          action: "update",
-          field: "permalink",
-          value: incoming.data.createTask.permalink,
-        }))
-        dispatch(updateTask({
-          id: incoming.data.createTask.id,
-          action: "update",
-          field: "isVirtual",
-          value: false
-        }))
-        if (getState().app.selectedTask === taskState.id) {
-          dispatch(attachmentsActions.handleFetchAttachments(taskState.id))
-          dispatch(historyActions.handleFetchHistory(taskState.id))
-          dispatch(commentsActions.handleFetchComments(taskState.id))
-          PubSub.subscribeTopic("comments", taskState.id)
-        }
-      },
-      error: () => {
-        if (getState().app.selectedTask === taskState.id) {
-          dispatch(appActions.handleSetTask(null))
-        }
-        dispatch(removeTask(taskState.id))
-      }
-    })
-  } else {
-    if (taskState.projectId === getState().app.selectedProject) {
-      dispatch(createTask(taskState))
-      dispatch(appActions.handleSetTask(taskState.id))
-    }
-  }
-}
->>>>>>> main
 
 export const handleUpdateTask = (update) => (dispatch, getState) => {
   const { user, tasks } = getState()
@@ -188,7 +125,6 @@ export const handleUpdateTask = (update) => (dispatch, getState) => {
     dispatch(updateTask(update))
   }
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "updateTask" + update.field[0].toUpperCase() + update.field.slice(1),
     //   variables: {
@@ -202,21 +138,6 @@ export const handleUpdateTask = (update) => (dispatch, getState) => {
     //     }
     //   }
     // })
-=======
-    API.mutate({
-      type: "updateTask" + update.field[0].toUpperCase() + update.field.slice(1),
-      variables: {
-        id: update.id,
-        [update.field]: update.value
-      },
-      success: null,
-      error: () => {
-        if (getState().tasks[update.id]) {
-          dispatch(updateTask(snapshot))
-        }
-      }
-    })
->>>>>>> main
   }
 }
 
@@ -229,7 +150,6 @@ export const handleRemoveTask = (taskState, prevTask = null) => (dispatch, getSt
     dispatch(removeTask(taskState.id))
   }
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "deleteTaskAndComments",
     //   variables: { id: taskState.id },
@@ -269,47 +189,6 @@ export const handleRemoveTask = (taskState, prevTask = null) => (dispatch, getSt
 //     })
 //   }
 // }
-=======
-    API.mutate({
-      type: "deleteTaskAndComments",
-      variables: { id: taskState.id },
-      success: null,
-      error: () => {
-        if (getState().app.selectedProject === taskState.projectId) {
-          dispatch(createTask(taskState))
-        }
-      }
-    })
-  }
-}
-
-export const handleAddAssignee = (taskId, username) => async (dispatch, getState) => {
-  const { user } = getState()
-  if (user.state === AuthState.SignedIn) {
-    dispatch(updateTask({
-      id: taskId,
-      action: "append",
-      field: "assignees",
-      value: username
-    }))
-    API.mutate({
-      type: "addAssignee",
-      variables: { id: taskId, assignee: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "remove",
-            field: "assignees",
-            value: username
-          }))
-        }
-      }
-    })
-  }
-}
->>>>>>> main
 
 export const handleRemoveAssignee = (taskId, username) => async (dispatch, getState) => {
   const { user } = getState()
@@ -320,7 +199,6 @@ export const handleRemoveAssignee = (taskId, username) => async (dispatch, getSt
     value: username
   }))
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "removeAssignee",
     //   variables: { id: taskId, assignee: username },
@@ -336,23 +214,6 @@ export const handleRemoveAssignee = (taskId, username) => async (dispatch, getSt
     //     }
     //   }
     // })
-=======
-    API.mutate({
-      type: "removeAssignee",
-      variables: { id: taskId, assignee: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "append",
-            field: "assignees",
-            value: username
-          }))
-        }
-      }
-    })
->>>>>>> main
   }
 }
 
@@ -365,7 +226,6 @@ export const handleAddAnonymousAssignee = (taskId, username) => async (dispatch,
     value: username
   }))
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "addAnonymousAssignee",
     //   variables: { id: taskId, assignee: username },
@@ -381,23 +241,6 @@ export const handleAddAnonymousAssignee = (taskId, username) => async (dispatch,
     //     }
     //   }
     // })
-=======
-    API.mutate({
-      type: "addAnonymousAssignee",
-      variables: { id: taskId, assignee: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "remove",
-            field: "anonymousAssignees",
-            value: username
-          }))
-        }
-      }
-    })
->>>>>>> main
   }
 }
 
@@ -410,7 +253,6 @@ export const handleRemoveAnonymousAssignee = (taskId, username) => async (dispat
     value: username
   }))
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "removeAnonymousAssignee",
     //   variables: { id: taskId, assignee: username },
@@ -426,23 +268,6 @@ export const handleRemoveAnonymousAssignee = (taskId, username) => async (dispat
     //     }
     //   }
     // })
-=======
-    API.mutate({
-      type: "removeAnonymousAssignee",
-      variables: { id: taskId, assignee: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "append",
-            field: "anonymousAssignees",
-            value: username
-          }))
-        }
-      }
-    })
->>>>>>> main
   }
 }
 
@@ -455,7 +280,6 @@ export const handleAddInvitedAssignee = (taskId, username) => async (dispatch, g
     value: username
   }))
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "addInvitedAssignee",
     //   variables: { id: taskId, assignee: username },
@@ -471,23 +295,6 @@ export const handleAddInvitedAssignee = (taskId, username) => async (dispatch, g
     //     }
     //   }
     // })
-=======
-    API.mutate({
-      type: "addInvitedAssignee",
-      variables: { id: taskId, assignee: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "remove",
-            field: "invitedAssignees",
-            value: username
-          }))
-        }
-      }
-    })
->>>>>>> main
   }
 }
 
@@ -500,7 +307,6 @@ export const handleRemoveInvitedAssignee = (taskId, username) => async (dispatch
     value: username
   }))
   if (user.state === AuthState.SignedIn) {
-<<<<<<< HEAD
     // API.mutate({
     //   type: "removeInvitedAssignee",
     //   variables: { id: taskId, assignee: username },
@@ -573,80 +379,6 @@ export const handleRemoveInvitedAssignee = (taskId, username) => async (dispatch
 //     })
 //   }
 // }
-=======
-    API.mutate({
-      type: "removeInvitedAssignee",
-      variables: { id: taskId, assignee: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "append",
-            field: "invitedAssignees",
-            value: username
-          }))
-        }
-      }
-    })
-  }
-}
-
-export const handleAddWatcher = (taskId, username) => async (dispatch, getState) => {
-  const { user } = getState()
-  if (user.state === AuthState.SignedIn) {
-    dispatch(updateTask({
-      id: taskId,
-      action: "append",
-      field: "watchers",
-      value: username
-    }))
-    await dispatch(usersActions.handleAddUsers([username]))
-    API.mutate({
-      type: "addWatcher",
-      variables: { id: taskId, watcher: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "remove",
-            field: "watchers",
-            value: username
-          }))
-        }
-      }
-    })
-  }
-}
-
-export const handleRemoveWatcher = (taskId, username) => async (dispatch, getState) => {
-  const { user } = getState()
-  if (user.state === AuthState.SignedIn) {
-    dispatch(updateTask({
-      id: taskId,
-      action: "remove",
-      field: "watchers",
-      value: username
-    }))
-    API.mutate({
-      type: "removeWatcher",
-      variables: { id: taskId, watcher: username },
-      success: null,
-      error: () => {
-        if (getState().tasks[taskId]) {
-          dispatch(updateTask({
-            id: taskId,
-            action: "append",
-            field: "watchers",
-            value: username
-          }))
-        }
-      }
-    })
-  }
-}
->>>>>>> main
 
 export const handleFetchTasks = (projectId, isInitial = false) => async (dispatch, getState) => {
   dispatch(statusActions.setTasksStatus(ThingStatus.FETCHING))
@@ -656,7 +388,6 @@ export const handleFetchTasks = (projectId, isInitial = false) => async (dispatc
   }
   if (user.state === AuthState.SignedIn || projects[projectId].isTemp) {
     try {
-<<<<<<< HEAD
       // const res = await API.execute(listTasksForProject, { projectId })
       // const items = res.data.listTasksForProject.items
       // let usersToBeFetched = []
@@ -670,21 +401,6 @@ export const handleFetchTasks = (projectId, isInitial = false) => async (dispatc
       // await dispatch(usersActions.handleAddUsers(usersToBeFetched))
       // dispatch(fetchTasks(items, projectId))
       // dispatch(statusActions.setTasksStatus(ThingStatus.READY))
-=======
-      const res = await API.execute(listTasksForProject, { projectId })
-      const items = res.data.listTasksForProject.items
-      let usersToBeFetched = []
-      for (const item of items) {
-        usersToBeFetched = [...new Set([
-          ...usersToBeFetched,
-          ...item.assignees,
-          ...item.watchers
-        ])]
-      }
-      await dispatch(usersActions.handleAddUsers(usersToBeFetched))
-      dispatch(fetchTasks(items, projectId))
-      dispatch(statusActions.setTasksStatus(ThingStatus.READY))
->>>>>>> main
     } catch (err) {
       if (err.message === 'Failed to fetch') {
         dispatch(fetchCachedTasks(cacheController.getTasksByProjectId(projectId)))
