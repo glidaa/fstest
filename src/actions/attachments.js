@@ -2,8 +2,8 @@ import { AuthState, ThingStatus } from '../constants';
  import { listAttachmentsByTaskId } from "../graphql/queries"
 import * as statusActions from "./status"
 import * as cacheController from "../controllers/cache"
-//  import API from '../amplify/API';
-import { API } from 'aws-amplify';
+import API from '../amplify/API';
+// import { API } from 'aws-amplify';
 
 
 export const CREATE_ATTACHMENT = "CREATE_ATTACHMENT";

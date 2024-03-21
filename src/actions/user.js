@@ -2,10 +2,12 @@ import { AuthState } from '../constants';
 import getGravatar from '../utils/getGravatar';
 import * as queries from "../graphql/queries"
 import * as cacheController from "../controllers/cache"
-// import Auth from '../amplify/Auth';
-// import API from '../amplify/API';
-// import PubSub from '../amplify/PubSub';
-import { API, PubSub,Auth } from 'aws-amplify';
+import Auth from '../amplify/Auth';
+import API from '../amplify/API';
+import PubSub from '../amplify/PubSub';
+
+
+// import { API, PubSub,Auth } from 'aws-amplify';
 
 
 export const SET_STATE = "SET_STATE";

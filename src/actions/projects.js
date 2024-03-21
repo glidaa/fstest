@@ -5,9 +5,9 @@ import * as cacheController from "../controllers/cache"
 import { AuthState, ThingStatus } from "../constants";
 import prepareProjectToBeSent from "../utils/prepareProjectToBeSent";
 import { navigate } from "../components/Router"
-//  import API from "../amplify/API"
-//  import PubSub from "../amplify/PubSub";
-import { API, PubSub } from 'aws-amplify';
+ import API from "../amplify/API"
+ import PubSub from "../amplify/PubSub";
+// import { API, PubSub } from 'aws-amplify';
 import { getPreviousItem } from "../utils/getAdjacentItem";
 import sortByRank from "../utils/sortByRank";
 import filterObj from "../utils/filterObj";

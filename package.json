@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/pubsub": "^6.0.21",
+    "@aws-amplify/ui-react": "^6.1.6",
     "@capacitor/android": "^4.5.0",
     "@capacitor/cli": "^4.5.0",
     "@capacitor/core": "^4.5.0",
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "vite serve",
-    "build": "node replaceText.js && vite build",
+    "build": "powershell -Command \"(Get-Content ./node_modules/highlight.js/lib/core.js).replace('global','globalFlag') | Set-Content ./node_modules/highlight.js/lib/core.js\" && vite build",
     "backend": "npm install -C amplify/backend/function/fsCoreApiResolver/src && npm install -C amplify/backend/function/fsCognitoPostConfirmation/src && npm install -C amplify/backend/function/fsDailyReport/src && rm -rf amplify/backend/api/fsCoreAPI/build && rm -rf amplify/backend/api/fsCoreAPI/pipelineFunctions && rm -rf amplify/backend/api/fsCoreAPI/resolvers && amplify api gql-compile --allow-destructive-graphql-schema-updates && amplify mock api",
     "preview": "vite preview",
     "storybook": "sb dev -p 6006",
@@ -85,9 +85,9 @@
     "postcss": "^8.4.18",
     "postcss-cli": "^10.0.0",
     "postcss-scss": "^4.0.5",
-    "prettier": "^2.8.8",
+    "prettier": "^2.7.1",
     "sass": "^1.56.1",
-    "vite": "^3.2.4",
+    "vite": "^3.2.8",
     "vite-plugin-pwa": "^0.13.3"
   },
   "readme": "ERROR: No README data found!",

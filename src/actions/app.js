@@ -5,10 +5,10 @@ import * as attachmentsActions from "./attachments"
 import * as historyActions from "./history"
 import { clearTabs } from "../components/TabViewManager"
 import { navigate } from "../components/Router"
-// import PubSub from "../amplify/PubSub"
-// import PubSub from '@aws-amplify/pubsub';
-// Use named imports for 'PubSub'
-import { PubSub } from '@aws-amplify/pubsub';
+import PubSub from "../amplify/PubSub"
+
+
+// import { PubSub } from '@aws-amplify/pubsub';
 
 
 
