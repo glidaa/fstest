@@ -1,9 +1,12 @@
 import { AuthState, ThingStatus } from '../constants';
-// import { listHistoryByTaskId } from "../graphql/queries"
+ import { listHistoryByTaskId } from "../graphql/queries"
 import * as statusActions from "./status"
 import * as usersActions from "./users"
 import * as cacheController from "../controllers/cache"
-// import API from '../amplify/API';
+//  import API from '../amplify/API';
+import { API } from 'aws-amplify';
+
+
 
 export const CREATE_HISTORY = "CREATE_HISTORY";
 export const EMPTY_HISTORY = "EMPTY_HISTORY";
@@ -30,34 +33,34 @@ const fetchCachedHistory = (history) => ({
   history
 });
 
-// export const handleFetchHistory = (taskId) => async (dispatch, getState) => {
-//   dispatch(statusActions.setHistoryStatus(ThingStatus.FETCHING))
-//   const { user, app, projects } = getState()
-//   if (user.state === AuthState.SignedIn || projects[app.selectedProject].isTemp) {
-//     try {
-//       const res = await API.execute(listHistoryByTaskId, { taskId })
-//       const items = res.data.listHistoryByTaskId.items;
-//       let usersToBeFetched = []
-//       for (const item of items) {
-//         usersToBeFetched = [...new Set([
-//           ...usersToBeFetched,
-//           item.owner,
-//           ...(item.field === "assignees" || item.field === "watchers"
-//             ? item.value
-//             : []),
-//         ])]
-//       }
-//       await dispatch(usersActions.handleAddUsers(usersToBeFetched))
-//       dispatch(fetchHistory(items, taskId))
-//       dispatch(statusActions.setHistoryStatus(ThingStatus.READY))
-//     } catch (err) {
-//       if (err.message === 'Failed to fetch') {
-//         dispatch(fetchCachedHistory(cacheController.getHistoryByTaskId(taskId)))
-//         dispatch(statusActions.setHistoryStatus(ThingStatus.READY))
-//       } else {
-//         dispatch(statusActions.setHistoryStatus(ThingStatus.ERROR))
-//       }
-//     }
-//     return getState().history
-//   }
-// }
+export const handleFetchHistory = (taskId) => async (dispatch, getState) => {
+  dispatch(statusActions.setHistoryStatus(ThingStatus.FETCHING))
+  const { user, app, projects } = getState()
+  if (user.state === AuthState.SignedIn || projects[app.selectedProject].isTemp) {
+    try {
+      const res = await API.execute(listHistoryByTaskId, { taskId })
+      const items = res.data.listHistoryByTaskId.items;
+      let usersToBeFetched = []
+      for (const item of items) {
+        usersToBeFetched = [...new Set([
+          ...usersToBeFetched,
+          item.owner,
+          ...(item.field === "assignees" || item.field === "watchers"
+            ? item.value
+            : []),
+        ])]
+      }
+      await dispatch(usersActions.handleAddUsers(usersToBeFetched))
+      dispatch(fetchHistory(items, taskId))
+      dispatch(statusActions.setHistoryStatus(ThingStatus.READY))
+    } catch (err) {
+      if (err.message === 'Failed to fetch') {
+        dispatch(fetchCachedHistory(cacheController.getHistoryByTaskId(taskId)))
+        dispatch(statusActions.setHistoryStatus(ThingStatus.READY))
+      } else {
+        dispatch(statusActions.setHistoryStatus(ThingStatus.ERROR))
+      }
+    }
+    return getState().history
+  }
+}

@@ -6,6 +6,11 @@ import * as historyActions from "./history"
 import { clearTabs } from "../components/TabViewManager"
 import { navigate } from "../components/Router"
 // import PubSub from "../amplify/PubSub"
+// import PubSub from '@aws-amplify/pubsub';
+// Use named imports for 'PubSub'
+import { PubSub } from '@aws-amplify/pubsub';
+
+
 
 export const SET_PROJECT = "SET_PROJECT";
 export const SET_TASK = "SET_TASK";
@@ -83,9 +88,9 @@ export const setLockedTaskField = (fieldName) => ({
 export const handleSetProject = (id, shouldChangeURL = true) => (dispatch, getState) => {
   const { user, app, projects } = getState()
   if (app.selectedProject !== id) {
-    // PubSub.unsubscribeTopic("tasks");
-    // dispatch(handleSetTask(null, shouldChangeURL));
-    // dispatch(tasksActions.emptyTasks());
+     PubSub.unsubscribeTopic("tasks");
+     dispatch(handleSetTask(null, shouldChangeURL));
+     dispatch(tasksActions.emptyTasks());
     if (id) {
       if (projects[id]) {
         dispatch(setProject(id))
@@ -99,9 +104,9 @@ export const handleSetProject = (id, shouldChangeURL = true) => (dispatch, getSt
       }
       if (!getState().projects[id].isVirtual) {
         dispatch(tasksActions.handleFetchTasks(id))
-        // if (user.state === AuthState.SignedIn || projects[id].isTemp) {
-        //   PubSub.subscribeTopic("tasks", id)
-        // }
+         if (user.state === AuthState.SignedIn || projects[id].isTemp) {
+           PubSub.subscribeTopic("tasks", id)
+         }
       }
     } else {
       if (shouldChangeURL) {
@@ -123,7 +128,7 @@ export const handleSetTask = (id, shouldChangeURL = true) => (dispatch, getState
   const { user, projects, tasks, app } = getState()
   dispatch(attachmentsActions.emptyAttachments())
   dispatch(historyActions.emptyHistory())
-  // PubSub.unsubscribeTopic("comments")
+   PubSub.unsubscribeTopic("comments")
   dispatch(commentsActions.emptyComments())
   dispatch(setProjectTitle(false))
   if (!id && app.selectedTask) {
@@ -157,7 +162,7 @@ export const handleSetTask = (id, shouldChangeURL = true) => (dispatch, getState
       dispatch(historyActions.handleFetchHistory(id))
       dispatch(commentsActions.handleFetchComments(id))
       if (user.state === AuthState.SignedIn) {
-        // PubSub.subscribeTopic("comments", id)
+         PubSub.subscribeTopic("comments", id)
       }
     }
   }
