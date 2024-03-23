@@ -17,6 +17,8 @@ import { Amplify } from "aws-amplify";
 import config from "../aws-exports.js";
 // import { withAuthenticator } from '@aws-amplify/ui-react';
 
+//test
+
 Amplify.configure(config);
 
 const App = () => {
