@@ -3,39 +3,39 @@
 
 const awsmobile = {
     "aws_project_region": "ap-southeast-2",
-    "aws_appsync_graphqlEndpoint": "https://h72k3chzlvd6rgyzahbdj4dkte.appsync-api.ap-southeast-2.amazonaws.com/graphql",
+    "aws_appsync_graphqlEndpoint": "https://bp4rqzb7jbaangbqobaehckyp4.appsync-api.ap-southeast-2.amazonaws.com/graphql",
     "aws_appsync_region": "ap-southeast-2",
-    "aws_appsync_authenticationType": "API_KEY",
-    "aws_appsync_apiKey": "da2-sfmir2cpmbaa5ghplr7tisllc4",
-    "aws_cognito_identity_pool_id": "ap-southeast-2:14091a3e-e4ab-4bed-b276-ed26305c1270",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "aws_cognito_identity_pool_id": "ap-southeast-2:3ca33ab4-9cfc-4d33-bc11-7efe2a9a043b",
     "aws_cognito_region": "ap-southeast-2",
-    "aws_user_pools_id": "ap-southeast-2_fSQW5I5Tr",
-    "aws_user_pools_web_client_id": "3qtfmj6u53ap7psekb3qgulqtt",
+    "aws_user_pools_id": "ap-southeast-2_0wqUd3kfb",
+    "aws_user_pools_web_client_id": "4q6pfa9spvfhldisphcuukrmvs",
     "oauth": {},
     "aws_cognito_username_attributes": [],
     "aws_cognito_social_providers": [],
     "aws_cognito_signup_attributes": [
-        "EMAIL"
+        "EMAIL",
+        "FAMILY_NAME",
+        "GIVEN_NAME",
+        "PHONE_NUMBER"
     ],
-    "aws_cognito_mfa_configuration": "OFF",
+    "aws_cognito_mfa_configuration": "OPTIONAL",
     "aws_cognito_mfa_types": [
-        "SMS"
+        "SMS",
+        "TOTP"
     ],
     "aws_cognito_password_protection_settings": {
-        "passwordPolicyMinLength": 8,
-        "passwordPolicyCharacters": []
+        "passwordPolicyMinLength": "8",
+        "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_UPPERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS"
+        ]
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
-    ],
-    "API": {
-        "GraphQL": {
-            "endpoint": "https://h72k3chzlvd6rgyzahbdj4dkte.appsync-api.ap-southeast-2.amazonaws.com/graphql",
-            "region": "ap-southeast-2",
-            "defaultAuthMode": "apiKey",
-            "apiKey": "da2-sfmir2cpmbaa5ghplr7tisllc4"
-        }
-    }
+    ]
 };
 
 
