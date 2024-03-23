@@ -85,6 +85,7 @@
   "function": {
     "fsCognitoPostConfirmation": {
       "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
@@ -113,6 +114,16 @@
     "fsDailyReport": {
       "build": true,
       "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "testFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "testFunction2": {
+      "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }

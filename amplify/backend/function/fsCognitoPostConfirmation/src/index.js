@@ -1,11 +1,5 @@
-/* Amplify Params - DO NOT EDIT
-  AUTH_FSCOGNITO_USERPOOLID
-  ENV
-  REGION
-Amplify Params - DO NOT EDIT */
 
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/no-unresolved */
+
 require('dotenv').config();
 
 const {

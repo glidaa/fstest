@@ -1,4 +1,11 @@
-/* eslint-disable no-await-in-loop */
+
+/* Amplify Params - DO NOT EDIT
+	API_FSCOREAPI_GRAPHQLAPIENDPOINTOUTPUT
+	API_FSCOREAPI_GRAPHQLAPIIDOUTPUT
+	AUTH_FSCOGNITO_USERPOOLID
+	ENV
+	REGION
+Amplify Params - DO NOT EDIT *//* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 /* Amplify Params - DO NOT EDIT
   API_FSCOREAPI_GRAPHQLAPIENDPOINTOUTPUT

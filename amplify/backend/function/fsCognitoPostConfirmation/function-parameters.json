@@ -14,5 +14,6 @@
   "roleName": "fsCognitoPostConfirmation",
   "skipEdit": true,
   "GROUP": "free",
-  "enableCors": false
+  "enableCors": false,
+  "permissions": {}
 }
