@@ -28,9 +28,7 @@
         "fsDailyReport": {
           "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
           "s3Key": "amplify-builds/fsDailyReport-476244565868714d6234-build.zip"
-        },
-        "testFunction": {},
-        "testFunction2": {}
+        }
       },
       "hosting": {
         "amplifyhosting": {

@@ -221,18 +221,6 @@
       "lastBuildType": "PROD",
       "lastPackageTimeStamp": "2024-03-23T17:51:22.950Z",
       "distZipFilename": "fsDailyReport-594d7236346474535146-build.zip"
-    },
-    "testFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "lastBuildTimeStamp": "2024-03-23T17:51:22.958Z",
-      "lastBuildType": "PROD"
-    },
-    "testFunction2": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
     }
   },
   "hosting": {
