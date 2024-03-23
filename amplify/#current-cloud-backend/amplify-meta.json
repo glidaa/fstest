@@ -1,0 +1,245 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-forwardslash-live-12321-authRole",
+      "UnauthRoleArn": "arn:aws:iam::026152918307:role/amplify-forwardslash-live-12321-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::026152918307:role/amplify-forwardslash-live-12321-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-forwardslash-live-12321-deployment",
+      "UnauthRoleName": "amplify-forwardslash-live-12321-unauthRole",
+      "StackName": "amplify-forwardslash-live-12321",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:026152918307:stack/amplify-forwardslash-live-12321/c563f550-e7ea-11ee-925a-06c799251653",
+      "AmplifyAppId": "d1gk5z33epfleh"
+    }
+  },
+  "api": {
+    "fsCoreAPI": {
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authfsCognito"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "y6m4n46mrfhphhtihsomqkje5m",
+        "GraphQLAPIEndpointOutput": "https://bp4rqzb7jbaangbqobaehckyp4.appsync-api.ap-southeast-2.amazonaws.com/graphql"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apifsCoreAPI"
+      },
+      "lastPushDirHash": "Gzzp1peEhTgG7pL4S8bKL9Q4IFk="
+    }
+  },
+  "auth": {
+    "fsCognito": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "fsCognitoPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OPTIONAL",
+        "mfaTypes": [
+          "SMS",
+          "TOTP"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_UPPERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS"
+          ],
+          "passwordPolicyMinLength": "8"
+        },
+        "signupAttributes": [
+          "EMAIL",
+          "FAMILY_NAME",
+          "GIVEN_NAME",
+          "PHONE_NUMBER"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "CreatedSNSRole": "arn:aws:iam::026152918307:role/sns9ae9647112321-live",
+        "UserPoolId": "ap-southeast-2_0wqUd3kfb",
+        "AppClientIDWeb": "4q6pfa9spvfhldisphcuukrmvs",
+        "AppClientID": "3j6833rsid0e5u6avd5ft9dmp0",
+        "IdentityPoolId": "ap-southeast-2:3ca33ab4-9cfc-4d33-bc11-7efe2a9a043b",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-southeast-2:026152918307:userpool/ap-southeast-2_0wqUd3kfb",
+        "IdentityPoolName": "fsIdentityPool__live",
+        "UserPoolName": "fsUserPool"
+      },
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/auth/fsCognito-cloudformation-template.json",
+        "logicalId": "authfsCognito"
+      },
+      "lastPushDirHash": "MER5Jv9DRe7mCXzz2tk0o/wuiHk="
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "fsCognito",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups",
+      "output": {
+        "freeGroupRole": "arn:aws:iam::026152918307:role/ap-southeast-2_0wqUd3kfb-freeGroupRole",
+        "proGroupRole": "arn:aws:iam::026152918307:role/ap-southeast-2_0wqUd3kfb-proGroupRole"
+      },
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "lastPushDirHash": "MQHhQ1RrpZoQ9x7Idmi+szpgCSo="
+    }
+  },
+  "custom": {},
+  "function": {
+    "fsCognitoPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::026152918307:role/fsCognitoPostConfirmation-live",
+        "Region": "ap-southeast-2",
+        "Arn": "arn:aws:lambda:ap-southeast-2:026152918307:function:fsCognitoPostConfirmation-live",
+        "Name": "fsCognitoPostConfirmation-live",
+        "LambdaExecutionRole": "fsCognitoPostConfirmation-live"
+      },
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/function/fsCognitoPostConfirmation-cloudformation-template.json",
+        "logicalId": "functionfsCognitoPostConfirmation"
+      },
+      "lastBuildTimeStamp": "2024-03-23T07:06:05.804Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-03-23T07:06:09.093Z",
+      "distZipFilename": "fsCognitoPostConfirmation-42423267596c73776d59-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
+        "s3Key": "amplify-builds/fsCognitoPostConfirmation-42423267596c73776d59-build.zip"
+      },
+      "lastPushDirHash": "yKL/GWWFzZj4B5QF+NCG+9Kbois="
+    },
+    "fsCoreApiResolver": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "fsCoreAPI"
+        },
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "fsCognito"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::026152918307:role/forwardslashLambdaRole938a46e0-live",
+        "Region": "ap-southeast-2",
+        "Arn": "arn:aws:lambda:ap-southeast-2:026152918307:function:fsCoreApiResolver-live",
+        "Name": "fsCoreApiResolver-live",
+        "LambdaExecutionRole": "forwardslashLambdaRole938a46e0-live"
+      },
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/function/fsCoreApiResolver-cloudformation-template.json",
+        "logicalId": "functionfsCoreApiResolver"
+      },
+      "lastBuildTimeStamp": "2024-03-23T07:06:11.510Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-03-23T07:06:14.377Z",
+      "distZipFilename": "fsCoreApiResolver-6a70425a536c764c7854-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
+        "s3Key": "amplify-builds/fsCoreApiResolver-6a70425a536c764c7854-build.zip"
+      },
+      "lastPushDirHash": "FNS7Btkhfp9+p691YCvhDRYAi+k="
+    },
+    "fsDailyReport": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::026152918307:role/forwardslashLambdaRole9ae89636-live",
+        "Region": "ap-southeast-2",
+        "CloudWatchEventRule": "amplify-forwardslash-live-12321-fun-CloudWatchEvent-pZaMIhuNsVHj",
+        "Arn": "arn:aws:lambda:ap-southeast-2:026152918307:function:fsDailyReport-live",
+        "Name": "fsDailyReport-live",
+        "LambdaExecutionRole": "forwardslashLambdaRole9ae89636-live"
+      },
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/function/fsDailyReport-cloudformation-template.json",
+        "logicalId": "functionfsDailyReport"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
+        "s3Key": "amplify-builds/fsDailyReport-476244565868714d6234-build.zip"
+      },
+      "lastBuildTimeStamp": "2024-03-23T07:06:15.427Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-03-23T07:06:15.439Z",
+      "distZipFilename": "fsDailyReport-476244565868714d6234-build.zip",
+      "lastPushDirHash": "ineKVGkD637spWvs7bZaPcYcpig="
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "providerPlugin": "awscloudformation",
+      "service": "amplifyhosting",
+      "type": "manual",
+      "output": {},
+      "lastPushTimeStamp": "2024-03-23T07:07:17.818Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-forwardslash-live-12321-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushDirHash": "sXcNZV/SKpmlo53QJ/PSoXJ+Kog="
+    }
+  }
+}

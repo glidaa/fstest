@@ -1,0 +1,173 @@
+{
+  "Description": "Root Stack for AWS Amplify CLI",
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "env": {
+      "Type": "String"
+    },
+    "AuthRoleArn": {
+      "Type": "String"
+    },
+    "UnauthRoleArn": {
+      "Type": "String"
+    },
+    "authfsCognitoUserPoolId": {
+      "Type": "String",
+      "Default": "authfsCognitoUserPoolId"
+    },
+    "authfsCognitoIdentityPoolId": {
+      "Type": "String",
+      "Default": "authfsCognitoIdentityPoolId"
+    },
+    "authfsCognitoAppClientID": {
+      "Type": "String",
+      "Default": "authfsCognitoAppClientID"
+    },
+    "authfsCognitoAppClientIDWeb": {
+      "Type": "String",
+      "Default": "authfsCognitoAppClientIDWeb"
+    }
+  },
+  "Conditions": {
+    "ShouldNotCreateEnvResources": {
+      "Fn::Equals": [
+        {
+          "Ref": "env"
+        },
+        "NONE"
+      ]
+    }
+  },
+  "Resources": {
+    "freeGroup": {
+      "Type": "AWS::Cognito::UserPoolGroup",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "authfsCognitoUserPoolId"
+        },
+        "Description": "override success",
+        "GroupName": "free",
+        "Precedence": 1,
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "freeGroupRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "freeGroupRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "authfsCognitoIdentityPoolId"
+                  }
+                },
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "authenticated"
+                }
+              }
+            }
+          ]
+        },
+        "RoleName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "authfsCognitoUserPoolId"
+              },
+              "-freeGroupRole"
+            ]
+          ]
+        }
+      }
+    },
+    "proGroup": {
+      "Type": "AWS::Cognito::UserPoolGroup",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "authfsCognitoUserPoolId"
+        },
+        "Description": "override success",
+        "GroupName": "pro",
+        "Precedence": 2,
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "proGroupRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "proGroupRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "authfsCognitoIdentityPoolId"
+                  }
+                },
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "authenticated"
+                }
+              }
+            }
+          ]
+        },
+        "RoleName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "authfsCognitoUserPoolId"
+              },
+              "-proGroupRole"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "freeGroupRole": {
+      "Value": {
+        "Fn::GetAtt": [
+          "freeGroupRole",
+          "Arn"
+        ]
+      }
+    },
+    "proGroupRole": {
+      "Value": {
+        "Fn::GetAtt": [
+          "proGroupRole",
+          "Arn"
+        ]
+      }
+    }
+  }
+}
