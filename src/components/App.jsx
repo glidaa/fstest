@@ -15,7 +15,7 @@ addRouteComponent("AuthFlow", AuthFlow);
 //AWS IMPORT
 import { Amplify } from "aws-amplify";
 import config from "../aws-exports.js";
-import { withAuthenticator } from '@aws-amplify/ui-react';
+// import { withAuthenticator } from '@aws-amplify/ui-react';
 
 Amplify.configure(config);
 
@@ -105,4 +105,4 @@ const App = () => {
 
 // export default App;
 
-export default withAuthenticator(App);
+export default (App);
