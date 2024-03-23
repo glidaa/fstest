@@ -20,6 +20,7 @@ import config from "../aws-exports.js";
 //test
 //test2
 //test3
+//test4
 
 Amplify.configure(config);
 
