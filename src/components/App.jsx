@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
-import API from "../amplify/API";
-// import { API } from 'aws-amplify';
+// import API from "../amplify/API";
+ import { API } from 'aws-amplify';
 import store from "../store";
 import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
@@ -12,16 +12,14 @@ import Router, { addRouteComponent } from "./Router";
 
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
+
 //AWS IMPORT
+const AWS = require('aws-sdk');
 import { Amplify } from "aws-amplify";
 import config from "../aws-exports.js";
 // import { withAuthenticator } from '@aws-amplify/ui-react';
 
-//test
-//test2
-//test3
-//test4
-//test5
+
 Amplify.configure(config);
 
 const App = () => {

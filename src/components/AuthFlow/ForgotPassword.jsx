@@ -3,10 +3,12 @@ import styles from "./ForgotPassword.module.scss"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import TextField from '../UI/fields/TextField';
-import Auth from '../../amplify/Auth';
+// import Auth from '../../amplify/Auth';
 import { navigate } from '../Router';
 import Button from '../UI/Button';
 
+// import { API, PubSub,Auth } from 'aws-amplify';
+import {Auth } from 'aws-amplify';
 const ForgotPassword = () => {
   const [username, setUsername] = useState("")
   const [newPassword, setNewPassword] = useState("")

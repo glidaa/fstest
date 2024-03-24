@@ -1,7 +1,9 @@
 import * as projectsActions from "../actions/projects"
-import API from "../amplify/API";
+// import API from "../amplify/API";
 import * as queries from "../graphql/queries"
-import PubSub from "../amplify/PubSub";
+// import PubSub from "../amplify/PubSub";
+
+import {API, PubSub } from 'aws-amplify';
 
 const updateAssignedTasks = async (dispatch, getState, pushedUpdate) => {
   const { assignedTasks } = pushedUpdate

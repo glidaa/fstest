@@ -1,5 +1,6 @@
 import awsconfig from "../aws-exports";
-import Auth from "./Auth";
+// import Auth from "./Auth";
+import {Auth } from 'aws-amplify';
 import signAwsReq from "./signAwsReq";
 import * as mutationsGraphQL from "../graphql/mutations";
 import * as mutationId from "../utils/mutationID";

@@ -15,9 +15,9 @@ import ProgressBar from "./UI/ProgressBar";
 import uploadLocal from "../utils/uploadLocal";
 import store from "../store";
 import { navigate, useRouterNoUpdates } from "./Router"
-import API from "../amplify/API"
-import PubSub from "../amplify/PubSub"
-// import { API, PubSub } from 'aws-amplify';
+// import API from "../amplify/API"
+// import PubSub from "../amplify/PubSub"
+ import { API, PubSub } from 'aws-amplify';
 import sortByRank from "../utils/sortByRank"
 
 const Loading = (props) => {

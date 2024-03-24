@@ -3,8 +3,8 @@ import { AuthState, ThingStatus } from '../constants';
 import * as statusActions from "./status"
 import * as usersActions from "./users"
 import * as cacheController from "../controllers/cache"
-  import API from '../amplify/API';
-// import { API } from 'aws-amplify';
+ // import API from '../amplify/API';
+ import { API } from 'aws-amplify';
 
 
 

@@ -3,8 +3,8 @@ import * as usersActions from "./users";
 import * as statusActions from "./status";
 import { listNotifications } from "../graphql/queries";
 import * as cacheController from "../controllers/cache";
-import API from "../amplify/API";
-// import { API } from 'aws-amplify';
+//  import API from "../amplify/API";
+ import { API } from 'aws-amplify';
 
 export const ADD_NOTIFICATION = "ADD_NOTIFICATION";
 export const PUSH_NOTIFICATION = "PUSH_NOTIFICATION";

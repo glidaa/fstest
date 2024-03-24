@@ -1,6 +1,6 @@
-import API from "../amplify/API";
+//import API from "../amplify/API";
 
-// import { API } from 'aws-amplify';
+ import { API } from 'aws-amplify';
 
 import {
   listUsersByUsernames,

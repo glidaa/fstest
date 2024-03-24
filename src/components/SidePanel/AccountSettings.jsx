@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useImperativeHandle, forwardRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-// import * as mutations from "../../graphql/mutations"
+ import * as mutations from "../../graphql/mutations"
 import * as appActions from "../../actions/app";
 import * as userActions from "../../actions/user";
 import styles from "./AccountSettings.module.scss"
@@ -8,6 +8,7 @@ import { ReactComponent as LogOutIcon } from "@fluentui/svg-icons/icons/sign_out
 import TextField from '../UI/fields/TextField';
 import Avatar from '../UI/Avatar';
 // import API from '../../amplify/API';
+import { API } from 'aws-amplify';
 import { useModal } from '../ModalManager';
 import modals from '../modals';
 
@@ -73,18 +74,18 @@ const AccountSettings = forwardRef((_, ref) => {
     })
   }
   const saveChanges = () => {
-    // setIsBusy(true)
-    // API.execute(mutations.updateUser, {
-    //   input: {
-    //     username,
-    //     firstName: newFirstName,
-    //     lastName: newLastName
-    //   }
-    // }).then((_) => {
-    //   setIsBusy(false)
-    // }).catch(() => {
-    //   setIsBusy(false)
-    // })
+    setIsBusy(true)
+    API.execute(mutations.updateUser, {
+      input: {
+        username,
+        firstName: newFirstName,
+        lastName: newLastName
+      }
+    }).then((_) => {
+      setIsBusy(false)
+    }).catch(() => {
+      setIsBusy(false)
+    })
   }
   useImperativeHandle(ref, () => ({
     panelProps: {
