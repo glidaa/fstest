@@ -26,6 +26,11 @@ import awsExports from './aws-exports';
 
 // Amplify.configure(config);
 
+AWS.config.update({
+  region: process.env.REACT_APP_AWS_REGION,
+  
+});
+
 Amplify.configure(awsExports);
 
 const App = () => {
