@@ -16,11 +16,17 @@ addRouteComponent("AuthFlow", AuthFlow);
 //AWS IMPORT
 const AWS = require('aws-sdk');
 import { Amplify } from "aws-amplify";
-import config from "../aws-exports.js";
+// import config from "../aws-exports.js";
+import awsExports from './aws-exports';
 // import { withAuthenticator } from '@aws-amplify/ui-react';
 
 
-Amplify.configure(config);
+// const rdsHost = process.env.RDS_HOST;
+// console.log(rdsHost)
+
+// Amplify.configure(config);
+
+Amplify.configure(awsExports);
 
 const App = () => {
   const dispatch = useDispatch();

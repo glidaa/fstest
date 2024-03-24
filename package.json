@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/pubsub": "^6.0.21",
     "@aws-amplify/ui-react": "^6.1.6",
     "@capacitor/android": "^4.5.0",
     "@capacitor/cli": "^4.5.0",
