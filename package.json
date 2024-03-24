@@ -17,7 +17,7 @@
     "@react-spring/web": "^9.5.5",
     "@use-gesture/react": "^10.2.22",
     "aws-amplify": "^6.0.21",
-    "aws-sdk": "^2.1261.0",
+    "aws-sdk": "^2.1584.0",
     "big-integer": "^1.6.51",
     "blueimp-md5": "^2.19.0",
     "csv": "^6.2.3",
@@ -89,7 +89,7 @@
     "postcss-scss": "^4.0.5",
     "prettier": "^2.7.1",
     "sass": "^1.56.1",
-    "vite": "^3.2.8",
+    "vite": "^3.2.10",
     "vite-plugin-pwa": "^0.13.3"
   },
   "readme": "ERROR: No README data found!",

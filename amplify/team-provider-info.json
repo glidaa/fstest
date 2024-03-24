@@ -1,5 +1,5 @@
 {
-  "staging": {
+  "live": {
     "awscloudformation": {
       "AuthRoleName": "amplify-forwardslash-live-12321-authRole",
       "UnauthRoleArn": "arn:aws:iam::026152918307:role/amplify-forwardslash-live-12321-unauthRole",
@@ -9,33 +9,7 @@
       "UnauthRoleName": "amplify-forwardslash-live-12321-unauthRole",
       "StackName": "amplify-forwardslash-live-12321",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:026152918307:stack/amplify-forwardslash-live-12321/c563f550-e7ea-11ee-925a-06c799251653",
-      "AmplifyAppId": "d26ut8fisbnuk0"
-    },
-    "categories": {
-      "auth": {
-        "fsCognito": {},
-        "userPoolGroups": {}
-      },
-      "function": {
-        "fsCognitoPostConfirmation": {
-          "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
-          "s3Key": "amplify-builds/fsCognitoPostConfirmation-44384a7646566b595745-build.zip"
-        },
-        "fsCoreApiResolver": {
-          "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
-          "s3Key": "amplify-builds/fsCoreApiResolver-45566e422b68417a5375-build.zip"
-        },
-        "fsDailyReport": {
-          "deploymentBucketName": "amplify-forwardslash-live-12321-deployment",
-          "s3Key": "amplify-builds/fsDailyReport-476244565868714d6234-build.zip"
-        }
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d26ut8fisbnuk0",
-          "type": "manual"
-        }
-      }
+      "AmplifyAppId": "d1gk5z33epfleh"
     }
   }
 }
