@@ -35,13 +35,12 @@
     "vite-plugin-svgr": "^2.2.2"
   },
   "scripts": {
-    "postinstall": "patch-package",
     "start": "vite serve",
-    "build": "vite build",
-    "backend": "...",
+    "build": "node replaceText.js && vite build",
+    "backend": "npm install -C amplify/backend/function/fsCoreApiResolver/src && npm install -C amplify/backend/function/fsCognitoPostConfirmation/src && npm install -C amplify/backend/function/fsDailyReport/src && rm -rf amplify/backend/api/fsCoreAPI/build && rm -rf amplify/backend/api/fsCoreAPI/pipelineFunctions && rm -rf amplify/backend/api/fsCoreAPI/resolvers && amplify api gql-compile --allow-destructive-graphql-schema-updates && amplify mock api",
     "preview": "vite preview",
-    "storybook": "sb dev -p 6006",
-    "build-storybook": "sb build"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "babel": {
     "presets": [
@@ -91,6 +90,7 @@
     "postcss-cli": "^10.0.0",
     "postcss-scss": "^4.0.5",
     "prettier": "^2.7.1",
+    "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.56.1",
     "vite": "^3.2.10",
     "vite-plugin-pwa": "^0.13.3"
