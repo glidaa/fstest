@@ -7,7 +7,9 @@ import * as cacheController from "../controllers/cache"
 // import PubSub from '../amplify/PubSub';
 
 
- import { API, PubSub,Auth } from 'aws-amplify';
+//  import { API, PubSub,Auth } from 'aws-amplify';
+import { API, PubSub, Auth } from 'aws-amplify';
+
 
 
 export const SET_STATE = "SET_STATE";

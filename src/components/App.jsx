@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
 import { API, Amplify } from 'aws-amplify';
-import awsExports from './aws-exports';
+// import awsExports from './aws-exports';
+import awsExports from "../aws-exports";
 import store from "../store";
 import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
@@ -24,7 +25,6 @@ Amplify.configure(awsExports);
 // AWS.config.update({
 //   region: process.env.REACT_APP_AWS_REGION,
 //   });
-
 
 const AWS = require('aws-sdk');
 AWS.config.update({

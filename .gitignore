@@ -50,5 +50,5 @@ node_modules/
 # amplify-gradle-config.json
 # amplifytools.xcconfig
 # .secret-*
-**.sample
+# **.sample
 #amplify-do-not-edit-end
