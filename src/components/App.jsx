@@ -2,36 +2,35 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
-// import API from "../amplify/API";
- import { API } from 'aws-amplify';
+import { API, Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
 import store from "../store";
 import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
 import Home from "./Home";
 import Router, { addRouteComponent } from "./Router";
 
+// Adding routes
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
 
-//AWS IMPORT
-const AWS = require('aws-sdk');
-import { Amplify } from "aws-amplify";
-// import config from "../aws-exports.js";
-import awsExports from './aws-exports';
-// import { withAuthenticator } from '@aws-amplify/ui-react';
+// Configuring AWS Amplify
+Amplify.configure(awsExports);
 
 
 // const rdsHost = process.env.RDS_HOST;
 // console.log(rdsHost)
 
-// Amplify.configure(config);
+// AWS.config.update({
+//   region: process.env.REACT_APP_AWS_REGION,
+//   });
 
+
+const AWS = require('aws-sdk');
 AWS.config.update({
-  region: process.env.REACT_APP_AWS_REGION,
-  
+  region: import.meta.env.VITE_AWS_REGION,
 });
 
-Amplify.configure(awsExports);
 
 const App = () => {
   const dispatch = useDispatch();
