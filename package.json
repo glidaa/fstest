@@ -25,6 +25,7 @@
     "highlight.js": "^11.7.0",
     "mariadb": "^3.0.2",
     "nanoid": "^4.0.0",
+    "patch-package": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-outer-click": "3.8.0",
@@ -34,9 +35,10 @@
     "vite-plugin-svgr": "^2.2.2"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "start": "vite serve",
-    "build": "powershell -Command \"(Get-Content ./node_modules/highlight.js/lib/core.js).replace('global','globalFlag') | Set-Content ./node_modules/highlight.js/lib/core.js\" && vite build",
-    "backend": "npm install -C amplify/backend/function/fsCoreApiResolver/src && npm install -C amplify/backend/function/fsCognitoPostConfirmation/src && npm install -C amplify/backend/function/fsDailyReport/src && rm -rf amplify/backend/api/fsCoreAPI/build && rm -rf amplify/backend/api/fsCoreAPI/pipelineFunctions && rm -rf amplify/backend/api/fsCoreAPI/resolvers && amplify api gql-compile --allow-destructive-graphql-schema-updates && amplify mock api",
+    "build": "vite build",
+    "backend": "...",
     "preview": "vite preview",
     "storybook": "sb dev -p 6006",
     "build-storybook": "sb build"
