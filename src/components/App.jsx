@@ -3,33 +3,45 @@ import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
 import { API, Amplify } from 'aws-amplify';
-// import awsExports from './aws-exports';
-import awsExports from "../aws-exports";
+import awsExports from "../aws-exports"; // Assuming this contains your Amplify configuration
+import { awsmobile } from './aws-sdk-config'; // Import your AWS SDK configuration
 import store from "../store";
 import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
 import Home from "./Home";
 import Router, { addRouteComponent } from "./Router";
+ import { AWS } from './aws-sdk-config';
 
 // Adding routes
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
 
-// Configuring AWS Amplify
-Amplify.configure(awsExports);
-
-
-// const rdsHost = process.env.RDS_HOST;
-// console.log(rdsHost)
-
-// AWS.config.update({
-//   region: process.env.REACT_APP_AWS_REGION,
-//   });
-
-const AWS = require('aws-sdk');
-AWS.config.update({
-  region: import.meta.env.VITE_AWS_REGION,
+// Unified AWS Amplify Configuration
+Amplify.configure({
+  ...awsExports, // Spread in awsExports configurations
+  Auth: {
+    // Overrides for Auth, if different from aws-exports.js
+    region: awsmobile.aws_cognito_region,
+    userPoolId: awsmobile.aws_user_pools_id,
+    userPoolWebClientId: awsmobile.aws_user_pools_web_client_id,
+    identityPoolId: awsmobile.aws_cognito_identity_pool_id,
+  },
+  // Include other AWS service configurations here as needed
 });
+
+// Assuming aws-sdk-config.js exports AWS after configuring it
+
+
+// Example AWS SDK usage
+// Ensure AWS SDK is configured before making any AWS service requests.
+// const s3 = new AWS.S3();
+// s3.listBuckets((err, data) => {
+//   if (err) console.log(err, err.stack); // an error occurred
+//   else console.log(data); // successful response
+// });
+
+
+
 
 
 const App = () => {
