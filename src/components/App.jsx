@@ -3,16 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
 import { API, Amplify } from 'aws-amplify';
-import awsExports from "../aws-exports"; // Assuming this contains your Amplify configuration
-import { awsmobile } from '../aws-sdk-config'; // Import your AWS SDK configuration
+import { awsmobile,awsExports } from '../aws-exports';
 import store from "../store";
 import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
 import Home from "./Home";
 import Router, { addRouteComponent } from "./Router";
-// import { AWS } from '../aws-sdk-config';
 
-
+Amplify.configure(awsExports);
 // Adding routes
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
