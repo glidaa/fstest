@@ -31,9 +31,9 @@ AWS.config.update({
   })
 });
 
-console.log("Region: ", AWS.config.region);
+// console.log("Region: ", AWS.config.region);
 
- console.log("Region: ", awsmobile.aws_cognito_region);
+// console.log("Region: ", awsmobile.aws_cognito_region);
 
 //  import { S3Client } from "@aws-sdk/client-s3";
 //  import { defaultProvider } from "@aws-sdk/credential-provider-node";
@@ -77,7 +77,7 @@ console.log("Region: ", AWS.config.region);
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
 
-// Unified AWS Amplify Configuration
+
 // Amplify.configure({
 //   ...awsExports, // Spread in awsExports configurations
 //   Auth: {
@@ -89,7 +89,7 @@ addRouteComponent("AuthFlow", AuthFlow);
   
 // });
 
-// Assuming aws-sdk-config.js exports AWS after configuring it
+
 
 
 
