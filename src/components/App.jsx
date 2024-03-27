@@ -20,9 +20,59 @@ import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
 import Home from "./Home";
 import Router, { addRouteComponent } from "./Router";
-// import { awsmobile,awsExports } from '../aws-exports';
 
-// Amplify.configure(awsExports);
+import AWS from 'aws-sdk';
+import awsmobile from '../aws-exports';
+
+AWS.config.update({
+  region: awsmobile.aws_cognito_region,
+  credentials: new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: awsmobile.aws_cognito_identity_pool_id
+  })
+});
+
+console.log("Region: ", AWS.config.region);
+
+ console.log("Region: ", awsmobile.aws_cognito_region);
+
+//  import { S3Client } from "@aws-sdk/client-s3";
+//  import { defaultProvider } from "@aws-sdk/credential-provider-node";
+//  import { fromEnv } from "@aws-sdk/credential-provider-env";
+
+// import { awsmobile,awsExports } from '../aws-exports';
+// var AWS = require("aws-sdk");
+// import AWS from 'aws-sdk';
+
+// const REGION = process.env.AWS_REGION;
+// const s3Client = new S3Client({
+//   region: REGION,
+//   credentials: defaultProvider({
+    
+//     providers: [fromEnv()], 
+//   }),
+// });
+// console.log(s3Client)
+// console.log("Region: ", REGION);
+
+//  console.log("Region:", process.env.AWS_REGION);
+
+// console.log("Access Key:", process.env.AWS_ACCESS_KEY_ID);
+// console.log("Secret Access Key:", process.env.AWS_SECRET_ACCESS_KEY);
+
+
+
+// var uuid = require("uuid");
+// console.log("Region: ", AWS.config.region);
+
+// const s3 = new AWS.S3();
+// s3.listBuckets((err, data) => {
+//   if (err) console.log(err, err.stack); // an error occurred
+//   else console.log(data); // successful response
+// });
+
+
+// AWS.config.update({region: 'ap-southeast-2'});
+
 // Adding routes
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
@@ -42,13 +92,6 @@ addRouteComponent("AuthFlow", AuthFlow);
 // Assuming aws-sdk-config.js exports AWS after configuring it
 
 
-// Example AWS SDK usage
-// Ensure AWS SDK is configured before making any AWS service requests.
-// const s3 = new AWS.S3();
-// s3.listBuckets((err, data) => {
-//   if (err) console.log(err, err.stack); // an error occurred
-//   else console.log(data); // successful response
-// });
 
 
 

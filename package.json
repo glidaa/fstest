@@ -6,6 +6,8 @@
     "@aws-amplify/api": "^6.0.23",
     "@aws-amplify/auth": "^6.0.23",
     "@aws-amplify/pubsub": "^6.0.23",
+    "@aws-sdk/client-s3": "^3.540.0",
+    "@aws-sdk/config-resolver": "^3.374.0",
     "@capacitor/android": "^4.5.0",
     "@capacitor/cli": "^4.5.0",
     "@capacitor/core": "^4.5.0",
@@ -19,7 +21,7 @@
     "@react-spring/web": "^9.5.5",
     "@use-gesture/react": "^10.2.22",
     "aws-amplify": "^6.0.23",
-    "aws-sdk": "^2.1261.0",
+    "aws-sdk": "^2.1586.0",
     "big-integer": "^1.6.51",
     "blueimp-md5": "^2.19.0",
     "csv": "^6.2.3",
@@ -33,6 +35,7 @@
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
+    "uuid": "^9.0.1",
     "vite-plugin-svgr": "^2.2.2"
   },
   "scripts": {
