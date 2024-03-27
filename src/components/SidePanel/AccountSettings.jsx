@@ -7,8 +7,8 @@ import styles from "./AccountSettings.module.scss"
 import { ReactComponent as LogOutIcon } from "@fluentui/svg-icons/icons/sign_out_24_regular.svg";
 import TextField from '../UI/fields/TextField';
 import Avatar from '../UI/Avatar';
-// import API from '../../amplify/API';
-import { API } from 'aws-amplify';
+ import API from '../../amplify/API';
+// import { API } from 'aws-amplify';
 import { useModal } from '../ModalManager';
 import modals from '../modals';
 

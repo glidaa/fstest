@@ -12,10 +12,10 @@ import { panelPages, AuthState } from '../constants';
 import store from "../store";
 import { navigate, useRouterNoUpdates } from "./Router"
 import sortByRank from "../utils/sortByRank"
-// import API from "../amplify/API"
-// import PubSub from "../amplify/PubSub"
+ import API from "../amplify/API"
+ import PubSub from "../amplify/PubSub"
 
-import { API, PubSub } from 'aws-amplify';
+// import { API, PubSub } from 'aws-amplify';
 
 const SyncManager = () => {
   const [isInitial, setIsInitial] = useState(true)

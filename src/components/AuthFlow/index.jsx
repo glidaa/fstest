@@ -3,8 +3,8 @@ import styles from "./index.module.scss"
 import Login from './Login';
 import NewAccount from './NewAccount';
 import ForgotPassword from './ForgotPassword';
-// import Auth from "../../amplify/Auth"
-import {Auth } from 'aws-amplify';
+ import Auth from "../../amplify/Auth"
+// import {Auth } from 'aws-amplify';
 import { ReactComponent as BackArrowIcon } from "@fluentui/svg-icons/icons/chevron_left_24_filled.svg";
 import { navigate, useRouterNoUpdates } from '../Router';
 

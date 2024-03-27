@@ -13,8 +13,8 @@ import updateWatchedTasks from "../pushedUpdates/updateWatchedTasks";
 import generateId from "../utils/generateID";
 import store from "../store"
 import { navigate } from "../components/Router"
-// import PubSub from "./PubSub"
-import {PubSub } from 'aws-amplify';
+import PubSub from "./PubSub"
+// import {PubSub } from 'aws-amplify';
 
 const subscriptionsTemplates = {
   notifications: [{

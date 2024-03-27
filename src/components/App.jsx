@@ -1,32 +1,43 @@
+// import React, { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import * as appActions from "../actions/app";
+// import * as appSettingsActions from "../actions/appSettings";
+// import { API, Amplify } from 'aws-amplify';
+// import { awsmobile,awsExports } from '../aws-exports';
+// import store from "../store";
+// import isOnline from "../utils/isOnline";
+// import AuthFlow from "./AuthFlow";
+// import Home from "./Home";
+// import Router, { addRouteComponent } from "./Router";
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
 import * as appSettingsActions from "../actions/appSettings";
-import { API, Amplify } from 'aws-amplify';
-import { awsmobile,awsExports } from '../aws-exports';
+import API from "../amplify/API";
 import store from "../store";
 import isOnline from "../utils/isOnline";
 import AuthFlow from "./AuthFlow";
 import Home from "./Home";
 import Router, { addRouteComponent } from "./Router";
+// import { awsmobile,awsExports } from '../aws-exports';
 
-Amplify.configure(awsExports);
+// Amplify.configure(awsExports);
 // Adding routes
 addRouteComponent("Home", Home);
 addRouteComponent("AuthFlow", AuthFlow);
 
 // Unified AWS Amplify Configuration
-Amplify.configure({
-  ...awsExports, // Spread in awsExports configurations
-  Auth: {
-    // Overrides for Auth, if different from aws-exports.js
-    region: awsmobile.aws_cognito_region,
-    userPoolId: awsmobile.aws_user_pools_id,
-    userPoolWebClientId: awsmobile.aws_user_pools_web_client_id,
-    identityPoolId: awsmobile.aws_cognito_identity_pool_id,
-  },
-  // Include other AWS service configurations here as needed
-});
+// Amplify.configure({
+//   ...awsExports, // Spread in awsExports configurations
+//   Auth: {
+//     region: awsmobile.aws_cognito_region,
+//     userPoolId: awsmobile.aws_user_pools_id,
+//     userPoolWebClientId: awsmobile.aws_user_pools_web_client_id,
+//     identityPoolId: awsmobile.aws_cognito_identity_pool_id,
+//   },
+  
+// });
 
 // Assuming aws-sdk-config.js exports AWS after configuring it
 

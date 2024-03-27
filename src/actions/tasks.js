@@ -8,10 +8,10 @@ import * as attachmentsActions from "./attachments"
 import * as historyActions from "./history"
 import * as cacheController from "../controllers/cache"
 import prepareTaskToBeSent from "../utils/prepareTaskToBeSent";
-//  import API from '../amplify/API';
-//  import PubSub from '../amplify/PubSub';
+ import API from '../amplify/API';
+ import PubSub from '../amplify/PubSub';
 
- import { API, PubSub } from 'aws-amplify';
+//  import { API, PubSub } from 'aws-amplify';
 
 
 

@@ -2,12 +2,14 @@ import { AuthState } from "../constants";
 import getGravatar from "../utils/getGravatar";
 import * as queries from "../graphql/queries";
 import * as cacheController from "../controllers/cache";
-import { API, Auth } from "aws-amplify";
-import PubSub from "@aws-amplify/pubsub";
+// import { API, Auth } from "aws-amplify";
+// import { PubSub } from '@aws-amplify/pubsub';
 
-// import Auth from '../amplify/Auth';
-// import API from '../amplify/API';
-// import PubSub from '../amplify/PubSub';
+
+
+import Auth from '../amplify/Auth';
+import API from '../amplify/API';
+import PubSub from '../amplify/PubSub';
 
 //  import { API, PubSub,Auth } from 'aws-amplify';
 // import { API, PubSub, Auth } from 'aws-amplify';

@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 import * as userActions from "../../actions/user"
 import * as cacheController from "../../controllers/cache"
 import TextField from '../UI/fields/TextField';
-// import Auth from '../../amplify/Auth';
-import {Auth } from 'aws-amplify';
+ import Auth from '../../amplify/Auth';
+// import {Auth } from 'aws-amplify';
 import { navigate } from '../Router';
 import Button from '../UI/Button';
 

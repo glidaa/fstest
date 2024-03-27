@@ -6,8 +6,8 @@ import * as tasksActions from "../actions/tasks"
  import * as queries from "../graphql/queries"
 import { AuthState } from '../constants';
 import { navigate, useRouter } from "./Router"
-// import API from "../amplify/API"
-import { API } from 'aws-amplify';
+ import API from "../amplify/API"
+// import { API } from 'aws-amplify';
 
 
 const NavigationManager = () => {
