@@ -31,7 +31,30 @@ AWS.config.update({
   })
 });
 
-// console.log("Region: ", AWS.config.region);
+
+const s3 = new AWS.S3({
+  apiVersion: '2006-03-01',
+  params: {Bucket: 'forwardslash.ch-storage-49cb99fe'},
+});
+
+// Function to upload a file to S3
+export const uploadFile = (file) => {
+  const uploadParams = {
+    Key: file.name, // The name of the file to store in S3
+    Body: file, // The file object
+    ACL: 'public-read', // Makes the file publicly readable (remove or adjust the ACL as needed)
+  };
+
+  s3.upload(uploadParams, function(err, data) {
+    if (err) {
+      console.log("Error uploading file:", err);
+    } else {
+      console.log("Successfully uploaded file:", data.Location);
+    }
+  });
+};
+
+//  console.log("Region: ", AWS.config.region);
 
 // console.log("Region: ", awsmobile.aws_cognito_region);
 
