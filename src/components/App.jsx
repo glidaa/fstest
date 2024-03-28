@@ -1,15 +1,3 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import * as appActions from "../actions/app";
-// import * as appSettingsActions from "../actions/appSettings";
-// import { API, Amplify } from 'aws-amplify';
-// import { awsmobile,awsExports } from '../aws-exports';
-// import store from "../store";
-// import isOnline from "../utils/isOnline";
-// import AuthFlow from "./AuthFlow";
-// import Home from "./Home";
-// import Router, { addRouteComponent } from "./Router";
-
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as appActions from "../actions/app";
