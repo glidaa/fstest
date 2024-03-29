@@ -19,28 +19,35 @@ AWS.config.update({
   })
 });
 
+// const dynamoDB = new AWS.DynamoDB({
+//   apiVersion: '2012-08-10'
+// });
+// console.log(dynamoDB);
 
-const s3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-  params: {Bucket: 'forwardslash.ch-storage-49cb99fe'},
-});
+
+
+// const s3 = new AWS.S3({
+//   apiVersion: '2006-03-01',
+//   params: {Bucket: 'forwardslash.ch-storage-49cb99fe'},
+// });
+// console.log(s3)
 
 // Function to upload a file to S3
-export const uploadFile = (file) => {
-  const uploadParams = {
-    Key: file.name, // The name of the file to store in S3
-    Body: file, // The file object
-    ACL: 'public-read', // Makes the file publicly readable (remove or adjust the ACL as needed)
-  };
+// export const uploadFile = (file) => {
+//   const uploadParams = {
+//     Key: file.name, // The name of the file to store in S3
+//     Body: file, // The file object
+//     ACL: 'public-read', // Makes the file publicly readable (remove or adjust the ACL as needed)
+//   };
 
-  s3.upload(uploadParams, function(err, data) {
-    if (err) {
-      console.log("Error uploading file:", err);
-    } else {
-      console.log("Successfully uploaded file:", data.Location);
-    }
-  });
-};
+//   s3.upload(uploadParams, function(err, data) {
+//     if (err) {
+//       console.log("Error uploading file:", err);
+//     } else {
+//       console.log("Successfully uploaded file:", data.Location);
+//     }
+//   });
+// };
 
 //  console.log("Region: ", AWS.config.region);
 
